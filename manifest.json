@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "SoundCloud Downloader",
+  "version": "2.0.0",
+  "description": "Скачивает треки, плейлисты, лайки и всех исполнителей SoundCloud в mp3 с тегами и обложкой.",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "permissions": ["offscreen", "downloads", "storage", "cookies", "scripting"],
+  "host_permissions": ["https://soundcloud.com/*", "https://*.soundcloud.com/*", "https://*.sndcdn.com/*"],
+  "background": { "service_worker": "background.js" },  "action": {
+    "default_title": "SoundCloud Downloader",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png" }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://soundcloud.com/*", "https://m.soundcloud.com/*"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}

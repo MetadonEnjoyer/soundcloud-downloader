@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Папка для сохранения</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="picker">
+  <header class="top">
+    <img src="icons/icon32.png" alt="" width="20" height="20">
+    <h1>Папка для сохранения</h1>
+  </header>
+  <section>
+    <p class="note">Сейчас: <strong id="current">…</strong></p>
+    <button id="pick" class="primary" type="button">Выбрать папку…</button>
+    <button id="regrant" type="button" hidden>Разрешить доступ снова</button>
+    <button id="reset" type="button">Сохранять в «Загрузки»</button>
+  </section>
+  <p id="status" class="status" role="status"></p>
+  <script src="shared.js"></script>
+  <script src="picker.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img src="icons/icon32.png" alt="" width="20" height="20">
+    <h1>SoundCloud Downloader</h1>
+    <button id="open-settings" class="ghost" type="button" title="Настройки" aria-label="Настройки" aria-expanded="false">⚙</button>
+  </header>
+
+  <div id="now" class="now-wrap" aria-live="polite">
+    <div class="now-clip">
+      <section class="now">
+        <h2 id="now-kind">Скачивается</h2>
+        <p id="now-title" class="now-title"></p>
+        <div class="now-bar"><div id="now-fill" class="now-fill"></div></div>
+        <div class="now-foot">
+          <p id="now-text" class="note"></p>
+          <button id="now-pause" class="ghost-btn" type="button">Пауза</button>
+          <button id="now-stop" class="ghost-btn danger" type="button">Стоп</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <p id="off-site" class="note" hidden>Откройте soundcloud.com, чтобы пользоваться меню.</p>
+
+  <main id="menu">
+    <section>
+      <h2>Исполнитель</h2>
+      <input id="artist" type="url" placeholder="https://soundcloud.com/имя" aria-label="Ссылка на исполнителя">
+      <div class="row">
+        <button data-job="artistTracks" class="primary" type="button">Скачать все песни</button>
+        <button data-job="artistPlaylist" type="button">Сделать плейлист</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Нравится</h2>
+      <div class="row">
+        <button data-job="likes" class="primary" type="button">Скачать все</button>
+        <button data-job="likesPlaylist" type="button">Сделать плейлист</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Объединить плейлисты</h2>
+      <div id="playlists" class="pl-list" role="group" aria-label="Ваши плейлисты"><p class="note">Загружаю ваши плейлисты…</p></div>
+      <input id="merge-title" type="text" placeholder="Название нового плейлиста" aria-label="Название нового плейлиста">
+      <button data-job="merge" type="button">Объединить отмеченные</button>
+    </section>
+  </main>
+
+  <section id="settings" hidden>
+    <h2>Папка для сохранения</h2>
+    <p class="note">Сейчас: <strong id="folder-name">Загрузки</strong></p>
+    <button id="choose-folder" class="primary" type="button">Выбрать папку…</button>
+    <p class="note">Откроется окно выбора папки Windows.</p>
+  </section>
+
+  <p id="status" class="status" role="status"></p>
+  <script src="popup.js"></script>
+</body>
+</html>

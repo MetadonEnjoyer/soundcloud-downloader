@@ -1,0 +1,9 @@
+# Third-party encoder (LGPL), fetched by each user, see README
+lame.min.js
+package/
+*.tgz
+
+# Packed extension builds
+*.crx
+*.pem
+*.zip
