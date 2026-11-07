@@ -40,6 +40,7 @@
 ```bash
 node id3.test.js
 node meta.test.js
+node shared.test.js
 ```
 
 ## Важно

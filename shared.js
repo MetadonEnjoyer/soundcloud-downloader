@@ -2,8 +2,18 @@
 const ILLEGAL_PATH_CHARS = /[\\/:*?"<>|\u0000-\u001f~]+/g;
 const NAME_MAX = 150;
 
-// Windows rejects reserved characters and trailing dots/spaces in file and folder names.
-globalThis.scdlSafePart = (s) => String(s).replace(ILLEGAL_PATH_CHARS, '_').replace(/^[. ]+|[. ]+$/g, '').slice(0, NAME_MAX);
+const EXTENSION = /(\.[a-z0-9]{1,5})$/i;
+const WINDOWS_RESERVED = /^(con|prn|aux|nul|com\d|lpt\d)(\.|$)/i;
+
+// Windows rejects reserved characters, trailing dots/spaces and device names (CON, NUL…) in file and folder names.
+// Long names are cut before the extension, so "….mp3" never loses its ".mp3".
+globalThis.scdlSafePart = (s) => {
+  const clean = String(s).replace(ILLEGAL_PATH_CHARS, '_').replace(/^[. ]+|[. ]+$/g, '');
+  const ext = clean.match(EXTENSION)?.[1] || '';
+  const base = clean.slice(0, clean.length - ext.length).slice(0, NAME_MAX - ext.length).replace(/[. ]+$/, '');
+  const name = `${base}${ext}`;
+  return WINDOWS_RESERVED.test(name) ? `_${name}` : name;
+};
 
 // Tiny key-value store in the extension's IndexedDB: the only place a folder handle can be kept.
 const kv = (mode, op) => new Promise((resolve, reject) => {
