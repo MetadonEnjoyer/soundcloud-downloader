@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SoundCloud Downloader",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Скачивает треки, плейлисты, лайки и всех исполнителей SoundCloud в mp3 с тегами и обложкой.",
   "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
   "permissions": ["offscreen", "downloads", "storage", "cookies", "scripting"],
